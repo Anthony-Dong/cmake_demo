@@ -9,9 +9,7 @@ add_subdirectory(src/model/idl)
 
 add_executable(${PROJECT_NAME} main.cpp)
 
-target_include_directories(${PROJECT_NAME} PRIVATE
-        /usr/local/include
-        src/model)
+target_include_directories(${PROJECT_NAME} PRIVATE /usr/local/include src/model)
 
 target_link_directories(${PROJECT_NAME} PRIVATE /usr/local/lib)
 target_link_libraries(${PROJECT_NAME} PUBLIC fmt db_model lib_idl)
