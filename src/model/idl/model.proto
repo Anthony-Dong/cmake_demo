@@ -1,0 +1,22 @@
+syntax = "proto2";
+
+package model.idl;
+
+import "common.proto";
+
+enum Gendor {
+  Female = 1;
+  Male = 2;
+}
+
+message People {
+  optional int64 ID = 1;
+  optional string Name = 2;
+  optional Gendor Gendor = 3;
+  repeated string ExtralList = 4;
+  map<string, string> Extra = 5;
+  optional ExtraInfo ExtraInfo = 6;
+  optional Status status = 7;
+}
+
+message ExtraInfo {optional string name = 1;}

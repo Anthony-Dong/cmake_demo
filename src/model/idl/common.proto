@@ -1,0 +1,8 @@
+syntax = "proto2";
+
+package model.idl;
+
+enum Status {
+  On = 0;
+  Off = 1;
+}
