@@ -34,11 +34,7 @@ make install
 ## 运行此项目
 
 ```shell
-rm -rf output
-cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug -S . -B output
-cd output
-make
-./cmake_demo
+make run
 ```
 
 ## 使用
