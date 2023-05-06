@@ -41,10 +41,10 @@ make
 ./cmake_demo
 ```
 
-## 输出日志
+## 使用
 
 ```text
-➜  cmake_demo git:(master) ✗ cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug -S . -B output
+➜  cmake_demo git:(master) ✗ make 
 -- The C compiler identification is AppleClang 13.0.0.13000027
 -- The CXX compiler identification is AppleClang 13.0.0.13000027
 -- Detecting C compiler ABI info
@@ -57,15 +57,10 @@ make
 -- Check for working CXX compiler: /Library/Developer/CommandLineTools/usr/bin/c++ - skipped
 -- Detecting CXX compile features
 -- Detecting CXX compile features - done
+CMAKE_VERSION:3.25.1
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /Users/bytedance/go/src/github.com/anthony-dong/cmake_demo/output
-➜  cmake_demo git:(master) ✗ ls
-CMakeLists.txt  README.md  cmake-build-debug/  main.cpp  output/  src/
-➜  cmake_demo git:(master) ✗ cd output
-➜  output git:(master) ✗ ls
-CMakeCache.txt  CMakeFiles/  Makefile  cmake_install.cmake  src/
-➜  output git:(master) ✗ make
 [ 12%] Building CXX object src/model/idl/CMakeFiles/lib_idl.dir/model.pb.cc.o
 [ 25%] Building CXX object src/model/idl/CMakeFiles/lib_idl.dir/common.pb.cc.o
 [ 37%] Building CXX object src/model/idl/CMakeFiles/lib_idl.dir/utils.cpp.o
@@ -77,10 +72,27 @@ CMakeCache.txt  CMakeFiles/  Makefile  cmake_install.cmake  src/
 [ 87%] Building CXX object CMakeFiles/cmake_demo.dir/main.cpp.o
 [100%] Linking CXX executable cmake_demo
 [100%] Built target cmake_demo
-➜  output git:(master) ✗ ./cmake_demo
+cd output && ./cmake_demo
 hello world!
 hello world!
 id: 1, name: 1314班
 people: {"ID":"1","Name":"tom"}
 people: {"ID":"1","Name":"tom"}
+```
+
+## 注意
+
+1. 如果出现了下面这个报错，执行 `sudo ldconfig` 即可.
+
+```text
+./cmake_demo: error while loading shared libraries: libfmt.so.9: cannot open shared object file: No such file or directory
+```
+
+2. 高版本的Cmake可以使用以下命令直接构建
+
+```shell
+mkdir -p output
+cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug -S . -B output
+cd output
+make
 ```
