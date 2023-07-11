@@ -31,6 +31,41 @@ cmake -DBUILD_SHARED_LIBS=TRUE .
 make install
 ```
 
+3. 下载 abseil
+
+你可以理解这个库主要是解决C++11(低版本)预览一些C++14/其他高版本的一些高级特性库
+
+```shell
+#  https://github.com/abseil/abseil-cpp/releases/tag/20220623.1 是abseil最后一个支持C++11的版本
+wget https://github.com/abseil/abseil-cpp/archive/refs/tags/20220623.1.tar.gz -O - | tar -zxvf -
+
+cd abseil-cpp-20220623.1
+
+cmake -DCMAKE_INSTALL_PREFIX=/usr/local -DABSL_ENABLE_INSTALL=ON -DABSL_USE_EXTERNAL_GOOGLETEST=ON -DABSL_FIND_GOOGLETEST=ON -DCMAKE_CXX_STANDARD=11 ..
+```
+
+- 如何引入absl,这里就需要了解cmake的find_package机制，具体可以看文章: https://zhuanlan.zhihu.com/p/97369704
+
+```cmake
+find_package(absl CONFIG REQUIRED)
+set(absl_LIBRARIES
+        absl::algorithm
+        absl::base
+        absl::debugging
+        absl::btree
+        absl::hash
+        absl::memory
+        absl::meta
+        absl::numeric
+        absl::status
+        absl::str_format
+        absl::strings
+        absl::synchronization
+        absl::time
+        absl::utility)
+target_link_libraries(${PROJECT_NAME} PUBLIC ${absl_LIBRARIES})
+```
+
 ## 运行此项目
 
 ```shell

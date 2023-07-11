@@ -31,14 +31,15 @@ struct People_ExtraEntry_DoNotUseDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT People_ExtraEntry_DoNotUseDefaultTypeInternal _People_ExtraEntry_DoNotUse_default_instance_;
 constexpr People::People(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : extrallist_()
+  : extralist_()
   , extra_(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{})
   , name_(&::PROTOBUF_NAMESPACE_ID::internal::fixed_address_empty_string)
   , extrainfo_(nullptr)
   , id_(int64_t{0})
   , status_(0)
 
-  , gendor_(1)
+  , id32_(0)
+  , gender_(1)
 {}
 struct PeopleDefaultTypeInternal {
   constexpr PeopleDefaultTypeInternal()
@@ -86,18 +87,20 @@ const uint32_t TableStruct_model_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(pr
   ~0u,  // no _inlined_string_donated_
   PROTOBUF_FIELD_OFFSET(::model::idl::People, id_),
   PROTOBUF_FIELD_OFFSET(::model::idl::People, name_),
-  PROTOBUF_FIELD_OFFSET(::model::idl::People, gendor_),
-  PROTOBUF_FIELD_OFFSET(::model::idl::People, extrallist_),
+  PROTOBUF_FIELD_OFFSET(::model::idl::People, gender_),
+  PROTOBUF_FIELD_OFFSET(::model::idl::People, extralist_),
   PROTOBUF_FIELD_OFFSET(::model::idl::People, extra_),
   PROTOBUF_FIELD_OFFSET(::model::idl::People, extrainfo_),
   PROTOBUF_FIELD_OFFSET(::model::idl::People, status_),
+  PROTOBUF_FIELD_OFFSET(::model::idl::People, id32_),
   2,
   0,
-  4,
+  5,
   ~0u,
   ~0u,
   1,
   3,
+  4,
   PROTOBUF_FIELD_OFFSET(::model::idl::ExtraInfo, _has_bits_),
   PROTOBUF_FIELD_OFFSET(::model::idl::ExtraInfo, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -109,8 +112,8 @@ const uint32_t TableStruct_model_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(pr
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, 8, -1, sizeof(::model::idl::People_ExtraEntry_DoNotUse)},
-  { 10, 23, -1, sizeof(::model::idl::People)},
-  { 30, 37, -1, sizeof(::model::idl::ExtraInfo)},
+  { 10, 24, -1, sizeof(::model::idl::People)},
+  { 32, 39, -1, sizeof(::model::idl::ExtraInfo)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -120,22 +123,23 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 };
 
 const char descriptor_table_protodef_model_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\013model.proto\022\tmodel.idl\032\014common.proto\"\200"
+  "\n\013model.proto\022\tmodel.idl\032\014common.proto\"\215"
   "\002\n\006People\022\n\n\002ID\030\001 \001(\003\022\014\n\004Name\030\002 \001(\t\022!\n\006G"
-  "endor\030\003 \001(\0162\021.model.idl.Gendor\022\022\n\nExtral"
-  "List\030\004 \003(\t\022+\n\005Extra\030\005 \003(\0132\034.model.idl.Pe"
-  "ople.ExtraEntry\022\'\n\tExtraInfo\030\006 \001(\0132\024.mod"
-  "el.idl.ExtraInfo\022!\n\006status\030\007 \001(\0162\021.model"
-  ".idl.Status\032,\n\nExtraEntry\022\013\n\003key\030\001 \001(\t\022\r"
-  "\n\005value\030\002 \001(\t:\0028\001\"\031\n\tExtraInfo\022\014\n\004name\030\001"
-  " \001(\t*\036\n\006Gendor\022\n\n\006Female\020\001\022\010\n\004Male\020\002"
+  "ender\030\003 \001(\0162\021.model.idl.Gender\022\021\n\tExtraL"
+  "ist\030\004 \003(\t\022+\n\005Extra\030\005 \003(\0132\034.model.idl.Peo"
+  "ple.ExtraEntry\022\'\n\tExtraInfo\030\006 \001(\0132\024.mode"
+  "l.idl.ExtraInfo\022!\n\006status\030\007 \001(\0162\021.model."
+  "idl.Status\022\014\n\004ID32\030\010 \001(\005\032,\n\nExtraEntry\022\013"
+  "\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"\031\n\tExtraI"
+  "nfo\022\014\n\004name\030\001 \001(\t*\036\n\006Gender\022\n\n\006Female\020\001\022"
+  "\010\n\004Male\020\002"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_model_2eproto_deps[1] = {
   &::descriptor_table_common_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_model_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_model_2eproto = {
-  false, false, 356, descriptor_table_protodef_model_2eproto, "model.proto", 
+  false, false, 369, descriptor_table_protodef_model_2eproto, "model.proto", 
   &descriptor_table_model_2eproto_once, descriptor_table_model_2eproto_deps, 1, 3,
   schemas, file_default_instances, TableStruct_model_2eproto::offsets,
   file_level_metadata_model_2eproto, file_level_enum_descriptors_model_2eproto, file_level_service_descriptors_model_2eproto,
@@ -148,11 +152,11 @@ PROTOBUF_ATTRIBUTE_WEAK const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable
 PROTOBUF_ATTRIBUTE_INIT_PRIORITY static ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptorsRunner dynamic_init_dummy_model_2eproto(&descriptor_table_model_2eproto);
 namespace model {
 namespace idl {
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* Gendor_descriptor() {
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* Gender_descriptor() {
   ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_model_2eproto);
   return file_level_enum_descriptors_model_2eproto[0];
 }
-bool Gendor_IsValid(int value) {
+bool Gender_IsValid(int value) {
   switch (value) {
     case 1:
     case 2:
@@ -188,8 +192,8 @@ class People::_Internal {
   static void set_has_name(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
-  static void set_has_gendor(HasBits* has_bits) {
-    (*has_bits)[0] |= 16u;
+  static void set_has_gender(HasBits* has_bits) {
+    (*has_bits)[0] |= 32u;
   }
   static const ::model::idl::ExtraInfo& extrainfo(const People* msg);
   static void set_has_extrainfo(HasBits* has_bits) {
@@ -197,6 +201,9 @@ class People::_Internal {
   }
   static void set_has_status(HasBits* has_bits) {
     (*has_bits)[0] |= 8u;
+  }
+  static void set_has_id32(HasBits* has_bits) {
+    (*has_bits)[0] |= 16u;
   }
 };
 
@@ -207,7 +214,7 @@ People::_Internal::extrainfo(const People* msg) {
 People::People(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
-  extrallist_(arena),
+  extralist_(arena),
   extra_(arena) {
   SharedCtor();
   if (!is_message_owned) {
@@ -218,7 +225,7 @@ People::People(::PROTOBUF_NAMESPACE_ID::Arena* arena,
 People::People(const People& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       _has_bits_(from._has_bits_),
-      extrallist_(from.extrallist_) {
+      extralist_(from.extralist_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   extra_.MergeFrom(from.extra_);
   name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
@@ -235,8 +242,8 @@ People::People(const People& from)
     extrainfo_ = nullptr;
   }
   ::memcpy(&id_, &from.id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&gendor_) -
-    reinterpret_cast<char*>(&id_)) + sizeof(gendor_));
+    static_cast<size_t>(reinterpret_cast<char*>(&gender_) -
+    reinterpret_cast<char*>(&id_)) + sizeof(gender_));
   // @@protoc_insertion_point(copy_constructor:model.idl.People)
 }
 
@@ -247,9 +254,9 @@ name_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlready
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
     reinterpret_cast<char*>(&extrainfo_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&status_) -
-    reinterpret_cast<char*>(&extrainfo_)) + sizeof(status_));
-gendor_ = 1;
+    0, static_cast<size_t>(reinterpret_cast<char*>(&id32_) -
+    reinterpret_cast<char*>(&extrainfo_)) + sizeof(id32_));
+gender_ = 1;
 }
 
 People::~People() {
@@ -285,7 +292,7 @@ void People::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  extrallist_.Clear();
+  extralist_.Clear();
   extra_.Clear();
   cached_has_bits = _has_bits_[0];
   if (cached_has_bits & 0x00000003u) {
@@ -297,11 +304,11 @@ void People::Clear() {
       extrainfo_->Clear();
     }
   }
-  if (cached_has_bits & 0x0000001cu) {
+  if (cached_has_bits & 0x0000003cu) {
     ::memset(&id_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&status_) -
-        reinterpret_cast<char*>(&id_)) + sizeof(status_));
-    gendor_ = 1;
+        reinterpret_cast<char*>(&id32_) -
+        reinterpret_cast<char*>(&id_)) + sizeof(id32_));
+    gender_ = 1;
   }
   _has_bits_.Clear();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
@@ -335,29 +342,29 @@ const char* People::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::int
         } else
           goto handle_unusual;
         continue;
-      // optional .model.idl.Gendor Gendor = 3;
+      // optional .model.idl.Gender Gender = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
           uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
-          if (PROTOBUF_PREDICT_TRUE(::model::idl::Gendor_IsValid(val))) {
-            _internal_set_gendor(static_cast<::model::idl::Gendor>(val));
+          if (PROTOBUF_PREDICT_TRUE(::model::idl::Gender_IsValid(val))) {
+            _internal_set_gender(static_cast<::model::idl::Gender>(val));
           } else {
             ::PROTOBUF_NAMESPACE_ID::internal::WriteVarint(3, val, mutable_unknown_fields());
           }
         } else
           goto handle_unusual;
         continue;
-      // repeated string ExtralList = 4;
+      // repeated string ExtraList = 4;
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 34)) {
           ptr -= 1;
           do {
             ptr += 1;
-            auto str = _internal_add_extrallist();
+            auto str = _internal_add_extralist();
             ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
             #ifndef NDEBUG
-            ::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "model.idl.People.ExtralList");
+            ::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "model.idl.People.ExtraList");
             #endif  // !NDEBUG
             CHK_(ptr);
             if (!ctx->DataAvailable(ptr)) break;
@@ -396,6 +403,15 @@ const char* People::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::int
           } else {
             ::PROTOBUF_NAMESPACE_ID::internal::WriteVarint(7, val, mutable_unknown_fields());
           }
+        } else
+          goto handle_unusual;
+        continue;
+      // optional int32 ID32 = 8;
+      case 8:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 64)) {
+          _Internal::set_has_id32(&has_bits);
+          id32_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
@@ -446,20 +462,20 @@ uint8_t* People::_InternalSerialize(
         2, this->_internal_name(), target);
   }
 
-  // optional .model.idl.Gendor Gendor = 3;
-  if (cached_has_bits & 0x00000010u) {
+  // optional .model.idl.Gender Gender = 3;
+  if (cached_has_bits & 0x00000020u) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteEnumToArray(
-      3, this->_internal_gendor(), target);
+      3, this->_internal_gender(), target);
   }
 
-  // repeated string ExtralList = 4;
-  for (int i = 0, n = this->_internal_extrallist_size(); i < n; i++) {
-    const auto& s = this->_internal_extrallist(i);
+  // repeated string ExtraList = 4;
+  for (int i = 0, n = this->_internal_extralist_size(); i < n; i++) {
+    const auto& s = this->_internal_extralist(i);
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::VerifyUTF8StringNamedField(
       s.data(), static_cast<int>(s.length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::SERIALIZE,
-      "model.idl.People.ExtralList");
+      "model.idl.People.ExtraList");
     target = stream->WriteString(4, s, target);
   }
 
@@ -524,6 +540,12 @@ uint8_t* People::_InternalSerialize(
       7, this->_internal_status(), target);
   }
 
+  // optional int32 ID32 = 8;
+  if (cached_has_bits & 0x00000010u) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(8, this->_internal_id32(), target);
+  }
+
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
@@ -540,12 +562,12 @@ size_t People::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated string ExtralList = 4;
+  // repeated string ExtraList = 4;
   total_size += 1 *
-      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(extrallist_.size());
-  for (int i = 0, n = extrallist_.size(); i < n; i++) {
+      ::PROTOBUF_NAMESPACE_ID::internal::FromIntSize(extralist_.size());
+  for (int i = 0, n = extralist_.size(); i < n; i++) {
     total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-      extrallist_.Get(i));
+      extralist_.Get(i));
   }
 
   // map<string, string> Extra = 5;
@@ -558,7 +580,7 @@ size_t People::ByteSizeLong() const {
   }
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x0000001fu) {
+  if (cached_has_bits & 0x0000003fu) {
     // optional string Name = 2;
     if (cached_has_bits & 0x00000001u) {
       total_size += 1 +
@@ -584,10 +606,15 @@ size_t People::ByteSizeLong() const {
         ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_status());
     }
 
-    // optional .model.idl.Gendor Gendor = 3;
+    // optional int32 ID32 = 8;
     if (cached_has_bits & 0x00000010u) {
+      total_size += ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32SizePlusOne(this->_internal_id32());
+    }
+
+    // optional .model.idl.Gender Gender = 3;
+    if (cached_has_bits & 0x00000020u) {
       total_size += 1 +
-        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_gendor());
+        ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::EnumSize(this->_internal_gender());
     }
 
   }
@@ -613,10 +640,10 @@ void People::MergeFrom(const People& from) {
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  extrallist_.MergeFrom(from.extrallist_);
+  extralist_.MergeFrom(from.extralist_);
   extra_.MergeFrom(from.extra_);
   cached_has_bits = from._has_bits_[0];
-  if (cached_has_bits & 0x0000001fu) {
+  if (cached_has_bits & 0x0000003fu) {
     if (cached_has_bits & 0x00000001u) {
       _internal_set_name(from._internal_name());
     }
@@ -630,7 +657,10 @@ void People::MergeFrom(const People& from) {
       status_ = from.status_;
     }
     if (cached_has_bits & 0x00000010u) {
-      gendor_ = from.gendor_;
+      id32_ = from.id32_;
+    }
+    if (cached_has_bits & 0x00000020u) {
+      gender_ = from.gender_;
     }
     _has_bits_[0] |= cached_has_bits;
   }
@@ -654,7 +684,7 @@ void People::InternalSwap(People* other) {
   auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_has_bits_[0], other->_has_bits_[0]);
-  extrallist_.InternalSwap(&other->extrallist_);
+  extralist_.InternalSwap(&other->extralist_);
   extra_.InternalSwap(&other->extra_);
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
       &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
@@ -662,12 +692,12 @@ void People::InternalSwap(People* other) {
       &other->name_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(People, status_)
-      + sizeof(People::status_)
+      PROTOBUF_FIELD_OFFSET(People, id32_)
+      + sizeof(People::id32_)
       - PROTOBUF_FIELD_OFFSET(People, extrainfo_)>(
           reinterpret_cast<char*>(&extrainfo_),
           reinterpret_cast<char*>(&other->extrainfo_));
-  swap(gendor_, other->gendor_);
+  swap(gender_, other->gender_);
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata People::GetMetadata() const {

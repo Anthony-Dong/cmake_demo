@@ -79,28 +79,28 @@ PROTOBUF_NAMESPACE_CLOSE
 namespace model {
 namespace idl {
 
-enum Gendor : int {
+enum Gender : int {
   Female = 1,
   Male = 2
 };
-bool Gendor_IsValid(int value);
-constexpr Gendor Gendor_MIN = Female;
-constexpr Gendor Gendor_MAX = Male;
-constexpr int Gendor_ARRAYSIZE = Gendor_MAX + 1;
+bool Gender_IsValid(int value);
+constexpr Gender Gender_MIN = Female;
+constexpr Gender Gender_MAX = Male;
+constexpr int Gender_ARRAYSIZE = Gender_MAX + 1;
 
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* Gendor_descriptor();
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* Gender_descriptor();
 template<typename T>
-inline const std::string& Gendor_Name(T enum_t_value) {
-  static_assert(::std::is_same<T, Gendor>::value ||
+inline const std::string& Gender_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, Gender>::value ||
     ::std::is_integral<T>::value,
-    "Incorrect type passed to function Gendor_Name.");
+    "Incorrect type passed to function Gender_Name.");
   return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
-    Gendor_descriptor(), enum_t_value);
+    Gender_descriptor(), enum_t_value);
 }
-inline bool Gendor_Parse(
-    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, Gendor* value) {
-  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<Gendor>(
-    Gendor_descriptor(), name, value);
+inline bool Gender_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, Gender* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<Gender>(
+    Gender_descriptor(), name, value);
 }
 // ===================================================================
 
@@ -273,36 +273,37 @@ class People final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kExtralListFieldNumber = 4,
+    kExtraListFieldNumber = 4,
     kExtraFieldNumber = 5,
     kNameFieldNumber = 2,
     kExtraInfoFieldNumber = 6,
     kIDFieldNumber = 1,
     kStatusFieldNumber = 7,
-    kGendorFieldNumber = 3,
+    kID32FieldNumber = 8,
+    kGenderFieldNumber = 3,
   };
-  // repeated string ExtralList = 4;
-  int extrallist_size() const;
+  // repeated string ExtraList = 4;
+  int extralist_size() const;
   private:
-  int _internal_extrallist_size() const;
+  int _internal_extralist_size() const;
   public:
-  void clear_extrallist();
-  const std::string& extrallist(int index) const;
-  std::string* mutable_extrallist(int index);
-  void set_extrallist(int index, const std::string& value);
-  void set_extrallist(int index, std::string&& value);
-  void set_extrallist(int index, const char* value);
-  void set_extrallist(int index, const char* value, size_t size);
-  std::string* add_extrallist();
-  void add_extrallist(const std::string& value);
-  void add_extrallist(std::string&& value);
-  void add_extrallist(const char* value);
-  void add_extrallist(const char* value, size_t size);
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& extrallist() const;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_extrallist();
+  void clear_extralist();
+  const std::string& extralist(int index) const;
+  std::string* mutable_extralist(int index);
+  void set_extralist(int index, const std::string& value);
+  void set_extralist(int index, std::string&& value);
+  void set_extralist(int index, const char* value);
+  void set_extralist(int index, const char* value, size_t size);
+  std::string* add_extralist();
+  void add_extralist(const std::string& value);
+  void add_extralist(std::string&& value);
+  void add_extralist(const char* value);
+  void add_extralist(const char* value, size_t size);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& extralist() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_extralist();
   private:
-  const std::string& _internal_extrallist(int index) const;
-  std::string* _internal_add_extrallist();
+  const std::string& _internal_extralist(int index) const;
+  std::string* _internal_add_extralist();
   public:
 
   // map<string, string> Extra = 5;
@@ -384,17 +385,30 @@ class People final :
   void _internal_set_status(::model::idl::Status value);
   public:
 
-  // optional .model.idl.Gendor Gendor = 3;
-  bool has_gendor() const;
+  // optional int32 ID32 = 8;
+  bool has_id32() const;
   private:
-  bool _internal_has_gendor() const;
+  bool _internal_has_id32() const;
   public:
-  void clear_gendor();
-  ::model::idl::Gendor gendor() const;
-  void set_gendor(::model::idl::Gendor value);
+  void clear_id32();
+  int32_t id32() const;
+  void set_id32(int32_t value);
   private:
-  ::model::idl::Gendor _internal_gendor() const;
-  void _internal_set_gendor(::model::idl::Gendor value);
+  int32_t _internal_id32() const;
+  void _internal_set_id32(int32_t value);
+  public:
+
+  // optional .model.idl.Gender Gender = 3;
+  bool has_gender() const;
+  private:
+  bool _internal_has_gender() const;
+  public:
+  void clear_gender();
+  ::model::idl::Gender gender() const;
+  void set_gender(::model::idl::Gender value);
+  private:
+  ::model::idl::Gender _internal_gender() const;
+  void _internal_set_gender(::model::idl::Gender value);
   public:
 
   // @@protoc_insertion_point(class_scope:model.idl.People)
@@ -406,7 +420,7 @@ class People final :
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> extrallist_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> extralist_;
   ::PROTOBUF_NAMESPACE_ID::internal::MapField<
       People_ExtraEntry_DoNotUse,
       std::string, std::string,
@@ -416,7 +430,8 @@ class People final :
   ::model::idl::ExtraInfo* extrainfo_;
   int64_t id_;
   int status_;
-  int gendor_;
+  int32_t id32_;
+  int gender_;
   friend struct ::TableStruct_model_2eproto;
 };
 // -------------------------------------------------------------------
@@ -692,108 +707,108 @@ inline void People::set_allocated_name(std::string* name) {
   // @@protoc_insertion_point(field_set_allocated:model.idl.People.Name)
 }
 
-// optional .model.idl.Gendor Gendor = 3;
-inline bool People::_internal_has_gendor() const {
-  bool value = (_has_bits_[0] & 0x00000010u) != 0;
+// optional .model.idl.Gender Gender = 3;
+inline bool People::_internal_has_gender() const {
+  bool value = (_has_bits_[0] & 0x00000020u) != 0;
   return value;
 }
-inline bool People::has_gendor() const {
-  return _internal_has_gendor();
+inline bool People::has_gender() const {
+  return _internal_has_gender();
 }
-inline void People::clear_gendor() {
-  gendor_ = 1;
-  _has_bits_[0] &= ~0x00000010u;
+inline void People::clear_gender() {
+  gender_ = 1;
+  _has_bits_[0] &= ~0x00000020u;
 }
-inline ::model::idl::Gendor People::_internal_gendor() const {
-  return static_cast< ::model::idl::Gendor >(gendor_);
+inline ::model::idl::Gender People::_internal_gender() const {
+  return static_cast< ::model::idl::Gender >(gender_);
 }
-inline ::model::idl::Gendor People::gendor() const {
-  // @@protoc_insertion_point(field_get:model.idl.People.Gendor)
-  return _internal_gendor();
+inline ::model::idl::Gender People::gender() const {
+  // @@protoc_insertion_point(field_get:model.idl.People.Gender)
+  return _internal_gender();
 }
-inline void People::_internal_set_gendor(::model::idl::Gendor value) {
-  assert(::model::idl::Gendor_IsValid(value));
-  _has_bits_[0] |= 0x00000010u;
-  gendor_ = value;
+inline void People::_internal_set_gender(::model::idl::Gender value) {
+  assert(::model::idl::Gender_IsValid(value));
+  _has_bits_[0] |= 0x00000020u;
+  gender_ = value;
 }
-inline void People::set_gendor(::model::idl::Gendor value) {
-  _internal_set_gendor(value);
-  // @@protoc_insertion_point(field_set:model.idl.People.Gendor)
+inline void People::set_gender(::model::idl::Gender value) {
+  _internal_set_gender(value);
+  // @@protoc_insertion_point(field_set:model.idl.People.Gender)
 }
 
-// repeated string ExtralList = 4;
-inline int People::_internal_extrallist_size() const {
-  return extrallist_.size();
+// repeated string ExtraList = 4;
+inline int People::_internal_extralist_size() const {
+  return extralist_.size();
 }
-inline int People::extrallist_size() const {
-  return _internal_extrallist_size();
+inline int People::extralist_size() const {
+  return _internal_extralist_size();
 }
-inline void People::clear_extrallist() {
-  extrallist_.Clear();
+inline void People::clear_extralist() {
+  extralist_.Clear();
 }
-inline std::string* People::add_extrallist() {
-  std::string* _s = _internal_add_extrallist();
-  // @@protoc_insertion_point(field_add_mutable:model.idl.People.ExtralList)
+inline std::string* People::add_extralist() {
+  std::string* _s = _internal_add_extralist();
+  // @@protoc_insertion_point(field_add_mutable:model.idl.People.ExtraList)
   return _s;
 }
-inline const std::string& People::_internal_extrallist(int index) const {
-  return extrallist_.Get(index);
+inline const std::string& People::_internal_extralist(int index) const {
+  return extralist_.Get(index);
 }
-inline const std::string& People::extrallist(int index) const {
-  // @@protoc_insertion_point(field_get:model.idl.People.ExtralList)
-  return _internal_extrallist(index);
+inline const std::string& People::extralist(int index) const {
+  // @@protoc_insertion_point(field_get:model.idl.People.ExtraList)
+  return _internal_extralist(index);
 }
-inline std::string* People::mutable_extrallist(int index) {
-  // @@protoc_insertion_point(field_mutable:model.idl.People.ExtralList)
-  return extrallist_.Mutable(index);
+inline std::string* People::mutable_extralist(int index) {
+  // @@protoc_insertion_point(field_mutable:model.idl.People.ExtraList)
+  return extralist_.Mutable(index);
 }
-inline void People::set_extrallist(int index, const std::string& value) {
-  extrallist_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set:model.idl.People.ExtralList)
+inline void People::set_extralist(int index, const std::string& value) {
+  extralist_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set:model.idl.People.ExtraList)
 }
-inline void People::set_extrallist(int index, std::string&& value) {
-  extrallist_.Mutable(index)->assign(std::move(value));
-  // @@protoc_insertion_point(field_set:model.idl.People.ExtralList)
+inline void People::set_extralist(int index, std::string&& value) {
+  extralist_.Mutable(index)->assign(std::move(value));
+  // @@protoc_insertion_point(field_set:model.idl.People.ExtraList)
 }
-inline void People::set_extrallist(int index, const char* value) {
+inline void People::set_extralist(int index, const char* value) {
   GOOGLE_DCHECK(value != nullptr);
-  extrallist_.Mutable(index)->assign(value);
-  // @@protoc_insertion_point(field_set_char:model.idl.People.ExtralList)
+  extralist_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:model.idl.People.ExtraList)
 }
-inline void People::set_extrallist(int index, const char* value, size_t size) {
-  extrallist_.Mutable(index)->assign(
+inline void People::set_extralist(int index, const char* value, size_t size) {
+  extralist_.Mutable(index)->assign(
     reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:model.idl.People.ExtralList)
+  // @@protoc_insertion_point(field_set_pointer:model.idl.People.ExtraList)
 }
-inline std::string* People::_internal_add_extrallist() {
-  return extrallist_.Add();
+inline std::string* People::_internal_add_extralist() {
+  return extralist_.Add();
 }
-inline void People::add_extrallist(const std::string& value) {
-  extrallist_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add:model.idl.People.ExtralList)
+inline void People::add_extralist(const std::string& value) {
+  extralist_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:model.idl.People.ExtraList)
 }
-inline void People::add_extrallist(std::string&& value) {
-  extrallist_.Add(std::move(value));
-  // @@protoc_insertion_point(field_add:model.idl.People.ExtralList)
+inline void People::add_extralist(std::string&& value) {
+  extralist_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:model.idl.People.ExtraList)
 }
-inline void People::add_extrallist(const char* value) {
+inline void People::add_extralist(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
-  extrallist_.Add()->assign(value);
-  // @@protoc_insertion_point(field_add_char:model.idl.People.ExtralList)
+  extralist_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:model.idl.People.ExtraList)
 }
-inline void People::add_extrallist(const char* value, size_t size) {
-  extrallist_.Add()->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_add_pointer:model.idl.People.ExtralList)
+inline void People::add_extralist(const char* value, size_t size) {
+  extralist_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:model.idl.People.ExtraList)
 }
 inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
-People::extrallist() const {
-  // @@protoc_insertion_point(field_list:model.idl.People.ExtralList)
-  return extrallist_;
+People::extralist() const {
+  // @@protoc_insertion_point(field_list:model.idl.People.ExtraList)
+  return extralist_;
 }
 inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
-People::mutable_extrallist() {
-  // @@protoc_insertion_point(field_mutable_list:model.idl.People.ExtralList)
-  return &extrallist_;
+People::mutable_extralist() {
+  // @@protoc_insertion_point(field_mutable_list:model.idl.People.ExtraList)
+  return &extralist_;
 }
 
 // map<string, string> Extra = 5;
@@ -944,6 +959,34 @@ inline void People::set_status(::model::idl::Status value) {
   // @@protoc_insertion_point(field_set:model.idl.People.status)
 }
 
+// optional int32 ID32 = 8;
+inline bool People::_internal_has_id32() const {
+  bool value = (_has_bits_[0] & 0x00000010u) != 0;
+  return value;
+}
+inline bool People::has_id32() const {
+  return _internal_has_id32();
+}
+inline void People::clear_id32() {
+  id32_ = 0;
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline int32_t People::_internal_id32() const {
+  return id32_;
+}
+inline int32_t People::id32() const {
+  // @@protoc_insertion_point(field_get:model.idl.People.ID32)
+  return _internal_id32();
+}
+inline void People::_internal_set_id32(int32_t value) {
+  _has_bits_[0] |= 0x00000010u;
+  id32_ = value;
+}
+inline void People::set_id32(int32_t value) {
+  _internal_set_id32(value);
+  // @@protoc_insertion_point(field_set:model.idl.People.ID32)
+}
+
 // -------------------------------------------------------------------
 
 // ExtraInfo
@@ -1032,10 +1075,10 @@ inline void ExtraInfo::set_allocated_name(std::string* name) {
 
 PROTOBUF_NAMESPACE_OPEN
 
-template <> struct is_proto_enum< ::model::idl::Gendor> : ::std::true_type {};
+template <> struct is_proto_enum< ::model::idl::Gender> : ::std::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::model::idl::Gendor>() {
-  return ::model::idl::Gendor_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::model::idl::Gender>() {
+  return ::model::idl::Gender_descriptor();
 }
 
 PROTOBUF_NAMESPACE_CLOSE
