@@ -2,34 +2,36 @@
 #define CMAKE_DEMO_CLASS_H
 
 #include <string>
+#include <ostream>
 
-namespace DB {
 namespace Model {
+namespace DB {
+
+static int Number = 100;
+static void print();
 
 class Class {
-   public:
+public:
     Class() = default;
-
-    Class(int id, const char* name);
-
-    void setId(int id);
-
-    void setName(const std::string& name);
-
-    void setCTime(int cTime);
-
+    Class(int id, const char *name);
     int getId() const;
-
-    const std::string& getName() const;
-
+    void setId(int id);
+    const std::string &getName() const;
+    void setName(const std::string &name);
     int getCTime() const;
+    void setCTime(int cTime);
+    friend std::ostream &operator<<(std::ostream &os, const Class &aClass);
 
-   private:
-    int id{};
-    std::string name{};
-    int c_time{};
+public:
+    static Class *instance_;
+
+private:
+    int id_;
+    std::string name_;
+    int c_time_;
 };
-}  // namespace Model
-}  // namespace DB
 
-#endif  // CMAKE_DEMO_CLASS_H
+} // namespace DB
+} // namespace Model
+
+#endif // CMAKE_DEMO_CLASS_H

@@ -1,14 +1,7 @@
-project(lib_idl)
+project(lib_model_idl)
 
-add_library(${PROJECT_NAME} SHARED model.pb.cc common.pb.cc utils.cpp)
+add_library(${PROJECT_NAME} ${module_is_static} model.pb.h model.pb.cc common.pb.h common.pb.cc utils.h utils.cpp)
 
-## link protobuf
-target_include_directories(${PROJECT_NAME} PRIVATE /usr/local/include)
+message("protoc_LIBRARIES" "${protoc_LIBRARIES}")
 
-if (${CMAKE_VERSION} VERSION_LESS 3.13)
-    link_directories(/usr/local/lib)
-else ()
-    target_link_directories(${PROJECT_NAME} PRIVATE /usr/local/lib)
-endif ()
-
-target_link_libraries(${PROJECT_NAME} PUBLIC protobuf)
+target_link_libraries(${PROJECT_NAME} PUBLIC ${protoc_LIBRARIES})

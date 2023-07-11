@@ -1,20 +1,25 @@
 #include <fmt/core.h>
-#include <idl/model.pb.h>
-#include <idl/utils.h>
-
-#include <db/Class.h++>
+#include "src/model/idl/model.pb.h"
+#include "src/model/db/Class.h++"
+#include "src/model/idl/utils.h"
 #include <iostream>
+#include <absl/strings/str_format.h>
+#include <google/protobuf/util/json_util.h>
 
 int main() {
-    std::cout << "hello world!" << std::endl;
     fmt::print("hello {}!\n", "world");
 
-    DB::Model::Class a(1, "1314班");
-    fmt::print("id: {}, name: {}\n", a.getId(), a.getName());
+    Model::DB::Class a(1, "1314班");
+    std::cout << a << std::endl;
 
     model::idl::People people{};
     people.set_name("tom");
     people.set_id(1);
     fmt::print("people: {}\n", model::idl::toJson(people));
-    fmt::print("people: {}\n", *model::idl::toJsonPtr(people));
+    std::string out;
+    google::protobuf::util::MessageToJsonString(people, &out);
+    fmt::print("out {}!\n", out);
+
+    std::string str = absl::StrFormat("Welcome to %s, Number %d!", "The Village", 6);
+    std::cout << str << std::endl;
 }

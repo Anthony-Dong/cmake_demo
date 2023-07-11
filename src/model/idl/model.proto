@@ -4,7 +4,7 @@ package model.idl;
 
 import "common.proto";
 
-enum Gendor {
+enum Gender {
   Female = 1;
   Male = 2;
 }
@@ -12,11 +12,12 @@ enum Gendor {
 message People {
   optional int64 ID = 1;
   optional string Name = 2;
-  optional Gendor Gendor = 3;
-  repeated string ExtralList = 4;
+  optional Gender Gender = 3;
+  repeated string ExtraList = 4;
   map<string, string> Extra = 5;
   optional ExtraInfo ExtraInfo = 6;
   optional Status status = 7;
+  optional int32  ID32 = 8;
 }
 
 message ExtraInfo {optional string name = 1;}
