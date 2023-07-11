@@ -1,9 +1,15 @@
 # CMake Demo
 
+## 下载
+
+```shell
+git clone --recurse-submodules git@github.com:Anthony-Dong/cmake_demo.git
+```
+
 ## 环境
 
 - C++11 
-
+- gcc && cmake
 ```shell
 ~ gcc --version
 gcc (Debian 6.3.0-18+deb9u1) 6.3.0 20170516
