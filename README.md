@@ -1,5 +1,9 @@
 # CMake Demo
 
+## 介绍
+
+cmake 示例项目，不过这种写法太过于原始了，新项目我比较推荐 [https://github.com/anthony-dong/cpp](https://github.com/Anthony-Dong/cpp/tree/master/cmake) 这个格式，参考bazel rule的写法
+
 ## 下载
 
 ```shell
